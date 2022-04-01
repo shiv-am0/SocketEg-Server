@@ -1,10 +1,14 @@
 package com.sriv.shivam;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Objects;
 
 public class Main {
     // declaring required variables
@@ -14,7 +18,9 @@ public class Main {
     private static BufferedReader bufferedReader;
     private static String message = "";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AWTException {
+        Robot robot = new Robot();
+
         try {
             serverSocket = new ServerSocket(47430);
         } catch (IOException e) {
@@ -43,6 +49,10 @@ public class Main {
 
                 // printing the message
                 System.out.println(message);
+
+                if(Objects.equals(message, "L")) {
+                    robot.mouseMove(100, 500);
+                }
 
                 // finally it is very important
                 // that you close the sockets
