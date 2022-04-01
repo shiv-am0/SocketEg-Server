@@ -16,19 +16,22 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            serverSocket = new ServerSocket(4444);
+            serverSocket = new ServerSocket(47430);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Server listening to port 4444");
+        System.out.println("Server listening to port 47430");
 
         while(!message.equalsIgnoreCase("over")) {
-            try {
+            System.out.println("While loop");
 
+            try {
+                System.out.println("Try block");
                 // the accept method waits for a new client connection
                 // and returns an individual socket for that connection
                 clientSocket = serverSocket.accept();
+                System.out.println("Client Socket = " + clientSocket.getLocalPort());
 
                 // get the inputstream from socket, which will have
                 // the message from the clients
